@@ -9,6 +9,7 @@ import java.util.Queue;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.BiConsumer;
 
 public class SetDemo extends Thread {
 	
@@ -28,6 +29,12 @@ public class SetDemo extends Thread {
 	    System.out.println("Sorted Set: " + sites); 
 	    System.out.println("First: " + sites.first()); 
 	    System.out.println("Last: " + sites.last()); 
+	    
+	    BiConsumer<Integer, Integer> summationLambda= ( a,  b) -> System.out.println(a+ " " +b);
+	    summationLambda.accept(50, 60);
+	    
+	   
+	    
 	    
 	    Queue<String> queue = new PriorityQueue<>();
 		queue.add("one");

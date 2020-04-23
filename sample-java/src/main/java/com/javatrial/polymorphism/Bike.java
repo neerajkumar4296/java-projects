@@ -7,43 +7,29 @@ public class Bike extends Vehicle {
 	
 	static String musicSystem = "BOSE";
 
-	public static void main(String args[]) {
-		/// Vehicle vehicle= new Vehicle();
-		// Bike bike = new Bike("FZ", "Yamaha");
-		Vehicle v = new Bike();
-		//Vehicle vehicle = new Vehicle();
-		// Vehicle vehicleBike= new Bike("FZ", "Yamaha");
-		// vehicle.run();
-		// bike.run();
-		// vehicleBike.run();
-		
-
-		v.run();
-
-		/*
-		 * System.out.println(" "); vehicle.run("", "");
-		 */
-
-	}
+	
 
 	public Bike() {
-		super();
-		System.out.println("in Bike");
+		System.out.println("creating Bike object");
 	}
 
 	public Bike(String companyName, String modelName) {
 		super("", "");
-		System.out.println("in Bike with args");
+		System.out.println("creating Bike object with args");
 		this.companyName = companyName;
 		this.modelName = modelName;
 	}
 
 	public void run() {
 
-		 System.out.println("running:: Commapany Name>>> " +companyName+
-				  " model Name>> " +modelName+ " and music system from ::" +musicSystem+ " running"); 
+		 System.out.println("Bike running:: Commapany Name>>> " +this.companyName+
+				  " model Name>> " +this.modelName+ " and music system from ::" +musicSystem+ " running"); 
 				 
 
+	}
+	
+	public void hasGear() {
+		System.out.println("automatic gears");
 	}
 
 	 public void run(String companyName, String modelName) {
