@@ -1,4 +1,4 @@
-package com.javatrial.seach;
+package com.javatrial.search;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -7,9 +7,11 @@ import java.util.Arrays;
 public class BinarySearch {
 	
 	public static void main(String[] args) {
-		int[] integers=   { 5,19,7,2, 68, 24, 8, 40, 64, 13, 96, 52, 29, 1 , 16, 43, 14, 91, 27, 36, 67, 4, 18, 72, 77, 23, 69, 22, 34};
-		//linearSearchElement(integers, 22);
-		searchBinaryElement(integers, 22);
+		int[] ints=   { 5,19,7,2, 68, 24, 8, 40, 64, 13, 96, 52, 29,5, 24, 1 , 16, 43, 14, 91, 27,5, 36, 67, 4, 18, 72, 77, 23, 69, 22, 34};
+		linearSearchElement(ints, 1);
+		searchBinaryElement(ints, 1);
+		
+		
 	}
 
 	// 0 1 2 3 4 5 6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28
@@ -28,7 +30,7 @@ public class BinarySearch {
 		int end= integers.length-1;
 		int mid= (start+end)/2;
 		
-		if(searchElement>integers[start] && searchElement<integers[end]) {
+		if(searchElement>=integers[start] && searchElement<=integers[end]) {
 		while(start<=end) {
 			
 			if(integers[mid]<searchElement) {
@@ -68,6 +70,7 @@ public class BinarySearch {
 		for(int i=0; i<=integers.length-1; i++) {
 			if (integers[i]==searchElement) {
 				System.out.println("found the element :: "+searchElement+" at position " +i);
+				break;
 			}
 			
 		}

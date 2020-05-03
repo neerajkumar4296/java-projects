@@ -1,4 +1,4 @@
-package com.javatrial.collections;
+package com.javatrial.java8;
 
 import java.net.InetAddress;
 import java.time.LocalDateTime;
@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 
 
-public class Streams {
+public class StreamsDemo {
 	
 	private static final String UNDERSCORE="_";
 
@@ -29,11 +29,14 @@ public class Streams {
 		getNameStartingWithZ(names);
 		sortNameByLength(names);
 		System.out.println("started sequential stream:: " +LocalDateTime.now().atZone(ZoneId.of("Asia/Kolkata")));
-		names.stream().forEach(Streams::show);
+		names.stream().forEach(StreamsDemo::show);
 		System.out.println("ended sequential stream:: " +LocalDateTime.now().atZone(ZoneId.of("Asia/Kolkata")));
 		System.out.println(" ");
 		System.out.println("started parallel stream:: " +LocalDateTime.now().atZone(ZoneId.of("Asia/Kolkata")));
-		names.parallelStream().sequential().forEach(Streams::show);
+		//parallel stream no guarantee of execution order
+		names.parallelStream().forEach(StreamsDemo::show);
+		// this will execute the stream sequentially...parallel stream is overridden
+		//names.parallelStream().sequential().forEach(StreamsDemo::show);
 		System.out.println("ended parallel stream:: " +LocalDateTime.now().atZone(ZoneId.of("Asia/Kolkata")));
 	}
 	private static String getNameStartingWithZ(List<String> names) {
@@ -63,9 +66,12 @@ public class Streams {
 	}
 	
 	private static List<String> sortNameByLength(List<String> values) {
-		Comparator<String> namesSortedByLengthLambda= (name1, name2)-> { return name1.length()-name2.length(); };
+		Comparator<String> namesSortedByLengthLambda= (name1, name2)-> name1.length()-name2.length();
 		//BiFunction<String, String, Integer> sortNamesOfSameLength= (name1, name2)->  name1.length()+name2.length();
-		
+		System.out.println("names sorted by length using lambda :: ");
+		List<String> namesSortedByLengthUsingLambda=values.stream().sorted(namesSortedByLengthLambda).collect(Collectors.toList());
+		namesSortedByLengthUsingLambda.forEach(System.out::print);
+		System.out.println("**********************************************");
 		List<String> namesSortedByLength= values.stream().sorted(Comparator.comparingInt(String::length)).collect(Collectors.toList());
 		System.out.println("names sorted by length :: " +namesSortedByLength);
 		return namesSortedByLength;

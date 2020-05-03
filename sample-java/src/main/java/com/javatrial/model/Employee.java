@@ -1,6 +1,6 @@
 package com.javatrial.model;
 
-public class Employee implements Comparable<Employee> {
+public class Employee  {
 
 	private int employeeId;
 
@@ -106,13 +106,7 @@ public class Employee implements Comparable<Employee> {
 
 
 
-	@Override
-	public int compareTo(Employee emp) {
-		if(this.getSalary()>emp.getSalary()) {
-			return 1;
-		}
-		return 0;
-	}
+	
 	
 
 }
