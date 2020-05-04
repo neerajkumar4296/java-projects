@@ -22,10 +22,28 @@ public class StreamsDemo {
 		List<String> names = Arrays.asList("Neeraj", "Rahul", "Mainak", "Santu", "Vikash"
 				                           , "Aarti", "Priyank", "Saibal", "Achalveer", "Arohi", "Jafar", "Aparna", "Ishank");
 		
+		List<Integer> integers = Arrays.asList(22,46, 62,12, 21, 97, 56,64, 59, 10, 8, 7, 31, 38, 27, 75);
+		
 		//InetAddress localhost = InetAddress.getLocalHost(); 
 		//System.out.println(localhost.getHostAddress()+" :: "+localhost.getCanonicalHostName()+" :: "+localhost.getHostName() );
 		
 		;
+		Predicate<Integer> isEven= integer-> integer%2==0;
+		boolean areAllNumbersEven= integers.stream().peek(integer->System.out.println(integer)).allMatch(isEven);
+		System.out.println(areAllNumbersEven);
+		
+		// Integers summation different approaches
+		Integer sumUsingIntegerClassMethod= integers.stream().peek(integer->System.out.print(integer)).reduce(0, Integer::sum);
+		Integer sumOfNumbersSkipingFirstThree= integers.stream().skip(3).mapToInt(Integer::intValue).sum();
+		Integer sumOfNumbersSkipingThree= integers.stream().skip(3).reduce(0, (integer1, integer2)-> integer1+integer2);
+		Double averageOfNumbers= integers.stream().skip(3).mapToInt(Integer::intValue).average().getAsDouble();
+		
+		System.out.println("sumUsingIntegerClassMethod:: " +sumUsingIntegerClassMethod);
+		System.out.println("sumOfNumbersSkipingFirstThree:: " +sumOfNumbersSkipingFirstThree);
+		System.out.println("sumOfNumbersSkipingThree:: " +sumOfNumbersSkipingThree);
+		System.out.println("averageOfNumbers:: " +Math.round(averageOfNumbers));
+		
+		
 		getNameStartingWithZ(names);
 		sortNameByLength(names);
 		System.out.println("started sequential stream:: " +LocalDateTime.now().atZone(ZoneId.of("Asia/Kolkata")));

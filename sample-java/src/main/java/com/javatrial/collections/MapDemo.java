@@ -44,6 +44,12 @@ public class MapDemo {
 				return emp1.getFirstName().compareTo(emp2.getFirstName());
 			}
 		};
+		System.out.println("List to Map");
+		
+		uniqueEmployeeList.stream()
+		.collect(Collectors.toMap(Employee::getEmployeeId, Employee::getSalary))
+		.forEach((empid, salary)-> System.out.println(empid+" "+ salary));;
+		
 		System.out.println("*****Sorting by key*****************");
 		getEmployeeMap().entrySet()
 						.stream()
